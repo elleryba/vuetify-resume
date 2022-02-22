@@ -7,7 +7,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-btn large icon v-on="on">
-        <v-icon size="30" color="accent">mdi-palette</v-icon>
+        <v-icon size="30" color="accent">mdi-brightness-6</v-icon>
       </v-btn>
     </template>
     <v-card>
@@ -18,7 +18,7 @@
           }}</v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
-          <v-switch v-model="$vuetify.theme.dark" @click="change()" />
+          <v-switch v-model="$vuetify.theme.dark" @click="setSwitchText()" />
         </v-list-item-action>
       </v-list-item>
       <v-divider />
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    change() {
+    setSwitchText() {
       this.isDark = !this.isDark
     },
   },
