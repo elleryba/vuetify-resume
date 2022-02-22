@@ -27,6 +27,10 @@
 
       <v-spacer></v-spacer>
 
+      <v-toolbar-items>
+        <ThemeChangerMenu />
+      </v-toolbar-items>
+
       <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
@@ -44,13 +48,15 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from './components/HelloWorld'
+import ThemeChangerMenu from './components/ThemeChangerMenu'
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    ThemeChangerMenu
   },
 
   data: () => ({
