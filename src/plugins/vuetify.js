@@ -13,13 +13,13 @@ export default new Vuetify({
         error: '#b71c1c',
       },
       dark: {
-        primary: '#607d8b',
-        secondary: '#673ab7',
-        accent: '#ff5722',
-        error: '#ff9800',
-        warning: '#ffc107',
-        info: '#2196f3',
-        success: '#03a9f4'
+        primary: '#878E8F',
+        secondary: '#3f51b5',
+        accent: '#C6D8DB',
+        error: '#ff5722',
+        warning: '#ff9800',
+        info: '#673ab7',
+        success: '#009688'
       }
     },
   },

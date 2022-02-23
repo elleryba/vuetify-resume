@@ -7,60 +7,74 @@
     >
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="Comic Me"
           class="shrink mr-2"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./assets/comic-me.png"
           transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
+          height="50"
         />
+        <span style="font-size:150%"> ELLE RYBA</span>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <ThemeChangerMenu />
+        <PhoneInfo />
       </v-toolbar-items>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        text
+        color="accent"
+        @click="sendEmail()"
+      >
+        <v-icon>mdi-email-fast</v-icon>
+      </v-btn>
+
+      <v-btn
+        href="https://www.linkedin.com/in/elle-ryba/"
         target="_blank"
         text
+        color="accent"
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon>mdi-linkedin</v-icon>
       </v-btn>
+
+      <v-toolbar-items>
+        <ThemeChanger />
+      </v-toolbar-items>
+      
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <AboutMe/>
     </v-main>
+
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import ThemeChangerMenu from './components/ThemeChangerMenu'
+import AboutMe from './components/AboutMe'
+import PhoneInfo from './components/PhoneInfo.vue';
+import ThemeChanger from './components/ThemeChanger'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
-    ThemeChangerMenu
+    AboutMe,
+    ThemeChanger,
+    PhoneInfo
   },
 
   data: () => ({
     //
   }),
+  methods: {
+     sendEmail(){
+       window.location = "mailto:elleryba@icloud.com";
+    }
+  }
 };
 </script>
