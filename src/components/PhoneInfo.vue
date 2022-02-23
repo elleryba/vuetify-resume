@@ -6,7 +6,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-btn large icon v-on="on">
-        <v-icon size="28" color="accent">mdi-cellphone</v-icon>
+        <v-icon size="26" color="accent">mdi-cellphone</v-icon>
       </v-btn>
     </template>
     <v-card>

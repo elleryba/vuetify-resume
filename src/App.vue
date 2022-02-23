@@ -6,19 +6,9 @@
       dark
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="Comic Me"
-          class="shrink mr-2"
-          contain
-          src="./assets/comic-me.png"
-          transition="scale-transition"
-          width="100"
-          height="50"
-        />
-        <span style="font-size:150%"> ELLE RYBA</span>
+        <v-icon size="28" color="info">mdi-newspaper-variant-outline</v-icon>
+        <span style="font-size:150%">ELLE RYBA</span>
       </div>
-
-      <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <PhoneInfo />
@@ -44,7 +34,6 @@
       <v-toolbar-items>
         <ThemeChanger />
       </v-toolbar-items>
-      
     </v-app-bar>
 
     <v-main>
@@ -72,8 +61,8 @@ export default {
     //
   }),
   methods: {
-     sendEmail(){
-       window.location = "mailto:elleryba@icloud.com";
+    sendEmail(){
+      window.location = "mailto:elleryba@icloud.com";
     }
   }
 };
