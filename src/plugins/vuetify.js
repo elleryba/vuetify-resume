@@ -4,7 +4,10 @@ import Vuetify from 'vuetify/lib';
 Vue.use(Vuetify);
 
 export default new Vuetify({
-    theme: {
+  theme: {
+    options: {
+      customProperties: true
+    },
     themes: {
       light: {
         primary: '#3f51b5',
