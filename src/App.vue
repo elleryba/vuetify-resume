@@ -17,22 +17,13 @@
         <PhoneInfo />
       </v-toolbar-items>
 
-      <v-btn
-        text
-        color="accent"
-        @click="sendEmail()"
-      >
-        <v-icon>mdi-email-fast</v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <EmailInfo />
+      </v-toolbar-items>
 
-      <v-btn
-        href="https://www.linkedin.com/in/elle-ryba/"
-        target="_blank"
-        text
-        color="accent"
-      >
-        <v-icon>mdi-linkedin</v-icon>
-      </v-btn>
+      <v-toolbar-items>
+        <LinkedInInfo />
+      </v-toolbar-items>
 
       <v-toolbar-items>
         <ThemeChanger />
@@ -40,7 +31,7 @@
     </v-app-bar>
 
     <v-main>
-      <AboutMe/>
+      <AboutMe />
     </v-main>
 
   </v-app>
@@ -48,6 +39,8 @@
 
 <script>
 import AboutMe from './components/AboutMe'
+import EmailInfo from './components/EmailInfo.vue'
+import LinkedInInfo from './components/LinkedInInfo.vue'
 import PhoneInfo from './components/PhoneInfo.vue';
 import ThemeChanger from './components/ThemeChanger'
 
@@ -56,6 +49,8 @@ export default {
 
   components: {
     AboutMe,
+    EmailInfo,
+    LinkedInInfo,
     ThemeChanger,
     PhoneInfo
   },
@@ -64,9 +59,6 @@ export default {
     //
   }),
   methods: {
-    sendEmail(){
-      window.location = "mailto:elleryba@icloud.com";
-    }
   }
 };
 </script>

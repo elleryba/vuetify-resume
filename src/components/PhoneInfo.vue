@@ -6,14 +6,22 @@
   >
     <template v-slot:activator="{ on }">
       <v-btn large icon v-on="on">
-        <v-icon size="26" color="accent">mdi-cellphone</v-icon>
+        <v-icon size="26" color="warning">mdi-cellphone</v-icon>
       </v-btn>
     </template>
     <v-card>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="font-weight-bold">216-379-9501</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">{{phoneNumber}}</v-list-item-title>
         </v-list-item-content>
+        <v-list-item-action>
+          <v-btn
+            v-model="phoneNumber"
+            @click="copyPhoneNumber()"
+          >
+            <v-icon size="20" color="accent">mdi-content-copy</v-icon>
+          </v-btn>
+        </v-list-item-action>
       </v-list-item>
       <v-divider />
     </v-card>
@@ -25,10 +33,15 @@ export default {
   name: 'PhoneInfo',
   data() {
     return {
-      menu: false
+      menu: false,
+      phoneNumber: '216-379-9501'
     }
   },
   methods: {
+    // add notification to user that action was completed
+    copyPhoneNumber(){
+      navigator.clipboard.writeText(this.phoneNumber);
+    }
   },
 }
 </script>

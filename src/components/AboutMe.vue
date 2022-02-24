@@ -70,6 +70,7 @@ export default {
     resetChip: false,
     selection: undefined,
     showTechStack: false,
+    // this will eventually be moved to a db and pulled via api call
     techSkills: [
       'CSS',
       'HTML',
