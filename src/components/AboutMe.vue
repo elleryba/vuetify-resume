@@ -6,7 +6,7 @@
       >
         <v-img
           max-height="250"
-          src="../assets/profile_pic.png"
+          :src="profilePic"
         ></v-img>
 
         <v-card-title>Elle Ryba</v-card-title>
@@ -29,44 +29,23 @@
 
         <v-divider class="mx-4"></v-divider>
 
-        <v-card-actions>
-          <v-btn
-            text
-            color="warning"
-            @click="showTechStack = true"
-          >
-            Tech Skills
-          </v-btn>
-        </v-card-actions>
+        <TechSkills />
 
-        <v-expand-transition>
-          <v-card
-            v-if="showTechStack"
-            class="transition-fast-in-fast-out v-card--reveal"
-            style="height: 100%;"
-          >
-            <v-card-text class="pb-0">
-              <p v-for="t in techSkills" :key="t">{{t}}</p>
-            </v-card-text>
-            <v-card-actions class="pt-0">
-              <v-btn
-                text
-                color="warning"
-                @click="showTechStack = false"
-              >
-                Close
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-expand-transition>
       </v-card>
 </template>
 
 <script>
+import TechSkills from './TechSkills.vue'
+
 export default {
   name: 'AboutMe',
+  components: {
+    TechSkills
+  },
   data: () => ({
     loading: false,
+    // would like to store and retrieve via api
+    profilePic: require('../assets/profile_pic.png'),
     resetChip: false,
     selection: undefined,
     showTechStack: false,
