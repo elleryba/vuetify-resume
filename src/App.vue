@@ -6,9 +6,12 @@
       dark
     >
       <div class="d-flex align-center">
-        <v-icon size="28" color="info">mdi-newspaper-variant-outline</v-icon>
+        <v-icon size="28" color="warning">mdi-newspaper-variant-outline</v-icon>
         <span style="font-size:150%">ELLE RYBA</span>
       </div>
+
+      <!-- The v-spacer separates the div above from the tookbar items below. -->
+      <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <PhoneInfo />
