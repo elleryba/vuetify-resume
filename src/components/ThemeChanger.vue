@@ -7,7 +7,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-btn large icon v-on="on">
-        <v-icon size="30" color="warning">mdi-brightness-6</v-icon>
+        <v-icon size="30" color="background">mdi-brightness-6</v-icon>
       </v-btn>
     </template>
     <v-card>

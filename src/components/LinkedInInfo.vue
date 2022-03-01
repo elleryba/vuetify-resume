@@ -3,9 +3,9 @@
     :href="route"
     target="_blank"
     text
-    color="warning"
+    color="background"
   >
-    <v-icon>mdi-linkedin</v-icon>
+    <v-icon size="26">mdi-linkedin</v-icon>
   </v-btn>
 </template>
 
