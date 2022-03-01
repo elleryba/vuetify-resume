@@ -18,7 +18,7 @@
           </v-row>
           <v-row class="my-2 mx-0">
             <div align="left" class="text-subtitle-3">
-              Built a new site with microservices within multiple domain driven apis. Full-stack project.
+              Engineered a back-end microservice framework within multiple domain driven apis. Full-stack project.
               Involved in all aspects of development. Responsible for maintaining and refining code as well as interpreting
               user stories to build out new features. Worked closely with testers to resolve bugs as they were reported.
             </div>

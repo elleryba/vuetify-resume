@@ -40,19 +40,29 @@
 
         </v-card>
 
-        <TechExperience />
+        <v-card
+          color="primary"
+          class="my-4 mx-4"
+          max-width="500"
+          elevation="5"
+        >
+          <TechExperience />
+          <PersonalInfo />
+        </v-card>
         
       </v-row>
   </div>
 </template>
 
 <script>
+import PersonalInfo from './PersonalInfo.vue'
 import TechExperience from './TechExperience.vue'
 import TechSkills from './TechSkills.vue'
 
 export default {
   name: 'AboutMe',
   components: {
+    PersonalInfo,
     TechExperience,
     TechSkills
   },
