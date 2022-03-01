@@ -1,10 +1,10 @@
 <template>
   <v-btn
     text
-    color="warning"
+    color="background"
     @click="sendEmail()"
   >
-    <v-icon>mdi-email-fast</v-icon>
+    <v-icon size="26">mdi-email-fast</v-icon>
   </v-btn>
 </template>
 

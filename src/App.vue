@@ -1,13 +1,13 @@
 <template>
-  <v-app>
+  <v-app :style="{background: $vuetify.theme.themes[theme].background}">
     <v-app-bar
       app
       color="primary"
       dark
     >
       <div class="d-flex align-center">
-        <v-icon size="28" color="warning">mdi-newspaper-variant-outline</v-icon>
-        <span style="font-size:150%">ELLE RYBA</span>
+        <v-icon size="28" color="background">mdi-newspaper-variant-outline</v-icon>
+        <span class="name" :style="{color: $vuetify.theme.themes[theme].background}">ELLE RYBA</span>
       </div>
 
       <!-- The v-spacer separates the div above from the tookbar items below. -->
@@ -58,7 +58,19 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    theme(){
+      return (this.$vuetify.theme.dark) ? 'dark' : 'light'
+    }
+  },
   methods: {
   }
 };
 </script>
+
+<style scoped>
+.name{
+  font-size: 150%;
+  font-weight: 400;
+}
+</style>
