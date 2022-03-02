@@ -13,24 +13,22 @@
             class="mx-0 my-0"
           >
             <div class="text-subtitle-1">
-              What am I up to?
+              Outside of Work
             </div>
           </v-row>
           <v-row class="my-2 mx-0">
             <div align="left" class="text-subtitle-3">
               In my personal time I am playing through the
               <a
-                :href="massEffectUrl"
+                href="https://www.ea.com/games/mass-effect/mass-effect-legendary-edition"
                 target="_blank"
-                color="warning"
               >
                 Mass Effect
               </a>
               trilogy via
               <a
-                :href="gamePassUrl"
+                href="https://www.xbox.com/en-US/games/store/xbox-game-pass-ultimate/cfq7ttc0khs0"
                 target="_blank"
-                color="warning"
               >Xbox Game Pass</a>.
             </div>
           </v-row>
@@ -41,17 +39,10 @@
 </template>
 
 <script>
-import { computed, defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
   setup() {
-    const gamePassUrl = computed<String>(() => 'https://www.xbox.com/en-US/games/store/xbox-game-pass-ultimate/cfq7ttc0khs0')
-    const massEffectUrl = computed<String>(() => 'https://www.ea.com/games/mass-effect/mass-effect-legendary-edition')
-
-    return {
-      gamePassUrl,
-      massEffectUrl
-    }
-  },
+  }
 })
 </script>

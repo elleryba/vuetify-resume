@@ -10,7 +10,7 @@
         <span class="name" :style="{color: $vuetify.theme.themes[theme].background}">ELLE RYBA</span>
       </div>
 
-      <!-- The v-spacer separates the div above from the tookbar items below. -->
+      <!-- The v-spacer separates the div above from the toolbar items below. -->
       <v-spacer></v-spacer>
 
       <v-toolbar-items>

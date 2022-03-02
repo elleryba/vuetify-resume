@@ -30,6 +30,8 @@
             <v-row class="my-2 mx-0">
               <div align="left" class="text-subtitle-3">
                 At this time, this entire project is comprised of only a front-end code base.
+                Why? Because I feel like front-end work has been my weak point. This is how I make
+                it a strength.
               </div>
             </v-row>
           </v-card-text>
