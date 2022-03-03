@@ -34,13 +34,13 @@ export default {
   data() {
     return {
       menu: false,
-      phoneNumber: '216-379-9501'
+      phoneNumber: 'XXX-XXX-XXXX'
     }
   },
   methods: {
     // add notification to user that action was completed
     copyPhoneNumber(){
-      navigator.clipboard.writeText(this.phoneNumber);
+      navigator.clipboard.writeText('216-379-9501');
     }
   },
 }

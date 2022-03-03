@@ -40,19 +40,20 @@
           <TechSkills />
 
         </v-card>
-
-        <v-card
-          color="primary"
-          class="my-4 mx-4"
-          max-width="500"
-          elevation="5"
+        <v-row
+          no-gutters
+          style="height: 150px;"
         >
-        <div class="my-auto">
-          <TechExperience />
-          <PersonalInfo />
-        </div>
-        </v-card>
-        
+          <v-card
+            color="primary"
+            class="my-4 mx-4"
+            max-width="500"
+            elevation="5"
+          >
+            <TechExperience />
+            <PersonalInfo />
+          </v-card>
+        </v-row>
       </v-row>
   </div>
 </template>
