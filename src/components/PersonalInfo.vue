@@ -13,7 +13,7 @@
             class="mx-0 my-0"
           >
             <div class="text-subtitle-1">
-              Outside of Work
+              A Day in the Life...
             </div>
           </v-row>
           <v-row class="my-2 mx-0">
@@ -29,7 +29,7 @@
               <a
                 href="https://www.xbox.com/en-US/games/store/xbox-game-pass-ultimate/cfq7ttc0khs0"
                 target="_blank"
-              >Xbox Game Pass</a>.
+              >Xbox Game Pass</a>. I am also working on this resume project, which I hope is obvious.
             </div>
           </v-row>
         </v-card-text>

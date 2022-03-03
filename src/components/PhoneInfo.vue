@@ -1,7 +1,7 @@
 <template>
   <v-menu
     v-model="menu"
-    :close-on-content-click="false"
+    :close-on-content-click="true"
     offset-y
   >
     <template v-slot:activator="{ on }">

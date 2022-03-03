@@ -42,17 +42,17 @@ export default {
     techSkills: [
       'CSS',
       'HTML',
+      'JavaScript',
+      'TypeScript',
+      'Vue.js (Vue 2 | vuetify | composition api)',
       'C#',
       '.NET',
-      'JavaScript',
       'SQL',
       'NoSQL',
-      'Vue.js (Vue 2 | vuetify | composition api)',
       'Sql Server Management Studio',
       'MongoDB',
       'Azure DevOps',
-      'Visual Studio',
-      'Visual Studio Code',
+      'Visual Studio | Visual Studio Code',
       'Postman'
     ]
   }),

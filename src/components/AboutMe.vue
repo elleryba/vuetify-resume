@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-row
-        :align="align"
         no-gutters
         style="height: 150px;"
       >
@@ -48,8 +47,10 @@
           max-width="500"
           elevation="5"
         >
+        <div class="my-auto">
           <TechExperience />
           <PersonalInfo />
+        </div>
         </v-card>
         
       </v-row>

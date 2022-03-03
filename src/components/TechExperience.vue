@@ -13,7 +13,7 @@
             class="mx-0 my-0"
           >
             <div class="text-subtitle-1">
-              National General Insurance Company
+              On the Job...
             </div>
           </v-row>
           <v-row class="my-2 mx-0">
@@ -34,7 +34,6 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
   setup() {
-    
   },
 })
 </script>

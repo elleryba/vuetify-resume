@@ -4,6 +4,7 @@
       app
       color="primary"
       dark
+      elevation="5"
     >
       <div class="d-flex align-center">
         <v-icon size="28" color="background">mdi-newspaper-variant-outline</v-icon>
@@ -26,12 +27,18 @@
       </v-toolbar-items>
 
       <v-toolbar-items>
+        <GitHubInfo />
+      </v-toolbar-items>
+
+      <v-toolbar-items>
         <ThemeChanger />
       </v-toolbar-items>
     </v-app-bar>
 
     <v-main>
-      <AboutMe />
+      <v-container class="d-flex justify-center">
+        <AboutMe />
+      </v-container>
     </v-main>
 
   </v-app>
@@ -40,6 +47,7 @@
 <script>
 import AboutMe from './components/AboutMe'
 import EmailInfo from './components/EmailInfo.vue'
+import GitHubInfo from './components/GitHubInfo.vue'
 import LinkedInInfo from './components/LinkedInInfo.vue'
 import PhoneInfo from './components/PhoneInfo.vue';
 import ThemeChanger from './components/ThemeChanger'
@@ -50,6 +58,7 @@ export default {
   components: {
     AboutMe,
     EmailInfo,
+    GitHubInfo,
     LinkedInInfo,
     ThemeChanger,
     PhoneInfo

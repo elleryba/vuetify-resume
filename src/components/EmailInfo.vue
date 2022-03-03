@@ -4,7 +4,7 @@
     color="background"
     @click="sendEmail()"
   >
-    <v-icon size="26">mdi-email-fast</v-icon>
+    <v-icon size="27">mdi-email-fast</v-icon>
   </v-btn>
 </template>
 
