@@ -1,4 +1,5 @@
 ﻿using Controllers.Entities.Types;
+using Controllers.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Controllers.Storage
@@ -10,16 +11,28 @@ namespace Controllers.Storage
     public partial class JobDutyContext
         : DbContext
     {
+        #region Private Fields
+
+        private readonly IConnectionStringService _service;
+
+        #endregion Private Fields
+
         #region Public Constructors
 
-        public JobDutyContext()
-        {
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobDutyContext"/> class.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        public JobDutyContext(IConnectionStringService service) => _service = service;
 
-        public JobDutyContext(DbContextOptions<JobDutyContext> options)
-            : base(options)
-        {
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobDutyContext"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="service">The service.</param>
+        public JobDutyContext(DbContextOptions<JobDutyContext> options,
+            IConnectionStringService service)
+            : base(options) => _service = service;
 
         #endregion Public Constructors
 
@@ -34,7 +47,7 @@ namespace Controllers.Storage
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer(_service.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,8 +70,14 @@ namespace Controllers.Storage
 
         #region Private Methods
 
-        private static string GetConnectionString()
-            => "Data Source=localhost\\SQLEXPRESS;Initial Catalog=EllerResume;Integrated Security=True";
+        //private static string GetConnectionString()
+        //{
+        //    IConfigurationRoot configuration = new ConfigurationBuilder()
+        //        .SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
+        //        .AddJsonFile("appsettings.json")
+        //        .Build();
+        //    return configuration.GetConnectionString("DefaultConnection");
+        //}
 
         #endregion Private Methods
     }

@@ -1,4 +1,5 @@
 ﻿using Controllers.Entities.Types.Entities;
+using Controllers.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Controllers.Storage.Storage
@@ -10,22 +11,47 @@ namespace Controllers.Storage.Storage
     public partial class JobHistoryContext
         : DbContext
     {
+        #region Private Fields
+
+        #region Private Fields
+
+        private readonly IConnectionStringService _connectionStringService;
+
+        #endregion Private Fields
+
+        #endregion Private Fields
+
         #region Public Constructors
 
-        public JobHistoryContext()
-        {
-        }
+        #region Public Constructors
 
-        public JobHistoryContext(DbContextOptions<JobHistoryContext> options)
-            : base(options)
-        {
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobHistoryContext"/> class.
+        /// </summary>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public JobHistoryContext(IConnectionStringService connectionStringService)
+            => _connectionStringService = connectionStringService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobHistoryContext"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public JobHistoryContext(DbContextOptions<JobHistoryContext> options,
+            IConnectionStringService connectionStringService)
+            : base(options) => _connectionStringService = connectionStringService;
+
+        #endregion Public Constructors
 
         #endregion Public Constructors
 
         #region Public Properties
 
+        #region Public Properties
+
         public virtual DbSet<JobHistory> JobHistories { get; set; }
+
+        #endregion Public Properties
 
         #endregion Public Properties
 
@@ -34,7 +60,7 @@ namespace Controllers.Storage.Storage
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer(_connectionStringService.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -72,12 +98,5 @@ namespace Controllers.Storage.Storage
         }
 
         #endregion Protected Methods
-
-        #region Private Methods
-
-        private static string GetConnectionString()
-            => "Data Source=localhost\\SQLEXPRESS;Initial Catalog=EllerResume;Integrated Security=True";
-
-        #endregion Private Methods
     }
 }

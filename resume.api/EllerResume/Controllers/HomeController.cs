@@ -19,7 +19,8 @@ namespace EllerResume.Controllers
         #region Private Fields
 
         private readonly ICardService _cardService;
-        private readonly IJobDutiesService _jobDutiesService;
+        private readonly IJobDutyService _jobDutyService;
+        private readonly IJobHistoryService _jobHistoryService;
 
         #endregion Private Fields
 
@@ -29,12 +30,15 @@ namespace EllerResume.Controllers
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="cardService">The card service.</param>
-        /// <param name="jobDutiesService">The job duties service.</param>
+        /// <param name="jobDutyService">The job duty service.</param>
+        /// <param name="jobHistoryService">The job history service.</param>
         public HomeController(ICardService cardService,
-            IJobDutiesService jobDutiesService)
+            IJobDutyService jobDutyService,
+            IJobHistoryService jobHistoryService)
         {
             _cardService = cardService;
-            _jobDutiesService = jobDutiesService;
+            _jobDutyService = jobDutyService;
+            _jobHistoryService = jobHistoryService;
         }
 
         #endregion Public Constructors
@@ -45,7 +49,16 @@ namespace EllerResume.Controllers
         [HttpGet]
         public async Task<ActionResult<JobDutyData>> GetJobDutyData()
         {
-            var result = await _jobDutiesService.GetAllJobDuties();
+            var result = await _jobDutyService.GetAllJobDutyData();
+
+            return Ok(result);
+        }
+
+        [Route("job_histories")]
+        [HttpGet]
+        public async Task<ActionResult<JobDutyData>> GetJobHistoryData()
+        {
+            var result = await _jobHistoryService.GetAllJobHistoryData();
 
             return Ok(result);
         }

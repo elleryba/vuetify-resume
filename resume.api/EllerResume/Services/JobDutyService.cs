@@ -9,20 +9,37 @@ using System.Threading.Tasks;
 namespace Controllers.Services
 {
     /// <summary>
-    /// The job duties service.
+    /// The job duty service.
     /// </summary>
-    /// <seealso cref="IJobDutiesService"/>
-    public class JobDutiesService
-        : IJobDutiesService
+    /// <seealso cref="IJobDutyService"/>
+    public class JobDutyService
+        : IJobDutyService
     {
+        #region Private Fields
+
+        private readonly IConnectionStringService _connectionStringService;
+
+        #endregion Private Fields
+
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobDutyService"/> class.
+        /// </summary>
+        /// <param name="connectionStringService">The service.</param>
+        public JobDutyService(IConnectionStringService connectionStringService)
+            => _connectionStringService = connectionStringService;
+
+        #endregion Public Constructors
+
         #region Public Methods
 
         /// <inheritdoc/>
-        public Task<IEnumerable<JobDutyData>> GetAllJobDuties()
+        public Task<IEnumerable<JobDutyData>> GetAllJobDutyData()
         {
             List<JobDutyData> data = new();
 
-            using (JobDutyContext dbContext = new())
+            using (JobDutyContext dbContext = new(_connectionStringService))
             {
                 DbSet<JobDuty> jobDuties = dbContext.JobDuties;
 
