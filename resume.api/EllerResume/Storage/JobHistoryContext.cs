@@ -1,22 +1,22 @@
-﻿using Controllers.Entities.Types;
+﻿using Controllers.Entities.Types.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Controllers.Storage
+namespace Controllers.Storage.Storage
 {
     /// <summary>
-    /// The job duty context.
+    /// The job history context.
     /// </summary>
     /// <seealso cref="DbContext"/>
-    public partial class JobDutyContext
+    public partial class JobHistoryContext
         : DbContext
     {
         #region Public Constructors
 
-        public JobDutyContext()
+        public JobHistoryContext()
         {
         }
 
-        public JobDutyContext(DbContextOptions<JobDutyContext> options)
+        public JobHistoryContext(DbContextOptions<JobHistoryContext> options)
             : base(options)
         {
         }
@@ -25,7 +25,7 @@ namespace Controllers.Storage
 
         #region Public Properties
 
-        public virtual DbSet<JobDuty> JobDuties { get; set; }
+        public virtual DbSet<JobHistory> JobHistories { get; set; }
 
         #endregion Public Properties
 
@@ -41,13 +41,31 @@ namespace Controllers.Storage
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<JobDuty>(entity =>
+            modelBuilder.Entity<JobHistory>(entity =>
             {
-                entity.Property(e => e.Id).IsUnicode(false);
+                entity.ToTable("JobHistory");
 
-                entity.Property(e => e.Duty).IsUnicode(false);
+                entity.Property(e => e.CompanyName)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.JobId).IsUnicode(false);
+                entity.Property(e => e.EndDate).HasColumnType("date");
+
+                entity.Property(e => e.StartDate).HasColumnType("date");
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Id)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                entity.Property(e => e.WorkedRemote)
+                    .IsRequired()
+                    .IsUnicode(false);
             });
 
             base.OnModelCreating(modelBuilder);

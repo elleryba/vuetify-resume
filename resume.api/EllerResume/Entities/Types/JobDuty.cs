@@ -3,7 +3,7 @@
 namespace Controllers.Entities.Types
 {
     /// <summary>
-    /// The JobDuty entity.
+    /// The JobDuty table entity.
     /// </summary>
     public partial class JobDuty
     {
