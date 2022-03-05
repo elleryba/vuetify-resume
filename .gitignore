@@ -1,1 +1,14 @@
 resume.api/.vs/EllerResume/DesignTimeBuild/.dtbcache.v2
+*.suo
+*.dll
+resume.api/Common/bin/Debug/net5.0/Common.deps.json
+*.pdb
+resume.api/Common/obj/Common.csproj.nuget.dgspec.json
+resume.api/Common/obj/project.assets.json
+resume.api/Common/obj/project.nuget.cache
+*.cache
+resume.api/Common/obj/Debug/net5.0/Common.csproj.FileListAbsolute.txt
+resume.api/EllerResume/bin/Debug/net5.0/Controllers.deps.json
+resume.api/EllerResume/obj/Controllers.csproj.nuget.dgspec.json
+resume.api/EllerResume/obj/project.assets.json
+resume.api/EllerResume/obj/Debug/net5.0/Controllers.csproj.FileListAbsolute.txt
