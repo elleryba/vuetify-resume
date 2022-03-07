@@ -45,11 +45,14 @@ namespace Controllers.Services
             var histories = await _jobHistoryService.GetAllJobHistoryData();
             var duties = await _jobDutyService.GetAllJobDutyData();
 
-            // TODO - i absolutely hate this
+            // TODO - better than it was but... idk i feel like there is a better solution
             foreach (var h in histories.Reverse())
             {
+                var matchingDuties = duties.Where(x => x.JobId == h.Id);
+
                 var newHistory = new WorkHistoryView()
                 {
+                    Duties = matchingDuties.Select(x => x.Duty).ToList(),
                     JobId = h.Id,
                     CompanyName = h.CompanyName,
                     Title = h.Title,
@@ -57,10 +60,6 @@ namespace Controllers.Services
                     EndDate = h.EndDate,
                     WorkedRemote = h.WorkedRemote
                 };
-
-                foreach (var d in duties.Reverse())
-                    if (d.JobId == newHistory.JobId)
-                        newHistory.Duties.Add(d.Duty);
 
                 workHistories.Add(newHistory);
             }
