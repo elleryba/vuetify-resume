@@ -47,7 +47,7 @@ namespace Controllers.Services
             var duties = await _jobDutyService.GetAllJobDutyData();
 
             // TODO - better than it was but... idk i feel like there is a better solution
-            foreach (var h in histories.Reverse())
+            foreach (var h in histories)
             {
                 var matchingDuties = duties.Where(x => x.JobId == h.Id);
 
