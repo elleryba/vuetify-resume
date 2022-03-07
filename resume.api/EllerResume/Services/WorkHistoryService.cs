@@ -1,4 +1,5 @@
 ﻿using Controllers.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -64,8 +65,8 @@ namespace Controllers.Services
                 workHistories.Add(newHistory);
             }
 
-            // TODO - need to figure out how to get null DateTime to the top of the list
-            return workHistories.OrderBy(workHistory => workHistory.EndDate).Reverse();
+            // TODO - this is a lil hacky but... thats showbiz baby!
+            return workHistories.OrderBy(workHistory => workHistory.EndDate ?? DateTime.Now).Reverse();
         }
 
         #endregion Public Methods
