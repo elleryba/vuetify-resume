@@ -57,6 +57,7 @@ namespace EllerResume
             services.AddScoped<IJobHistoryService, JobHistoryService>();
             services.AddScoped<ICardService, CardService>();
             services.AddScoped<IConnectionStringService, ConnectionStringService>();
+            services.AddScoped<IWorkHistoryService, WorkHistoryService>();
 
             services.AddCors(options =>
             {

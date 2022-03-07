@@ -1,8 +1,8 @@
-﻿using Controllers.Controllers.Responses;
-using Controllers.Data;
+﻿using Controllers.Data;
 using Controllers.Services;
+using Controllers.Views;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EllerResume.Controllers
@@ -18,9 +18,9 @@ namespace EllerResume.Controllers
     {
         #region Private Fields
 
-        private readonly ICardService _cardService;
         private readonly IJobDutyService _jobDutyService;
         private readonly IJobHistoryService _jobHistoryService;
+        private readonly IWorkHistoryService _workHistoryService;
 
         #endregion Private Fields
 
@@ -29,22 +29,23 @@ namespace EllerResume.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
-        /// <param name="cardService">The card service.</param>
         /// <param name="jobDutyService">The job duty service.</param>
         /// <param name="jobHistoryService">The job history service.</param>
-        public HomeController(ICardService cardService,
-            IJobDutyService jobDutyService,
-            IJobHistoryService jobHistoryService)
+        /// <param name="workHistoryService">The work history service.</param>
+        public HomeController(IJobDutyService jobDutyService,
+            IJobHistoryService jobHistoryService,
+            IWorkHistoryService workHistoryService)
         {
-            _cardService = cardService;
             _jobDutyService = jobDutyService;
             _jobHistoryService = jobHistoryService;
+            _workHistoryService = workHistoryService;
         }
 
         #endregion Public Constructors
 
         #region Public Methods
 
+        // TODO - remove - for testing only
         [Route("job_duties")]
         [HttpGet]
         public async Task<ActionResult<JobDutyData>> GetJobDutyData()
@@ -54,6 +55,7 @@ namespace EllerResume.Controllers
             return Ok(result);
         }
 
+        // TODO - remove - for testing only
         [Route("job_histories")]
         [HttpGet]
         public async Task<ActionResult<JobDutyData>> GetJobHistoryData()
@@ -63,11 +65,11 @@ namespace EllerResume.Controllers
             return Ok(result);
         }
 
-        [Route("cards")]
+        [Route("work_history")]
         [HttpGet]
-        public async Task<ActionResult<CardsResponse>> GetVehicleInfo(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<WorkHistoryView>>> GetWorkHistory()
         {
-            var result = await _cardService.GetCards(cancellationToken);
+            var result = await _workHistoryService.GetWorkHistory();
 
             return Ok(result);
         }
