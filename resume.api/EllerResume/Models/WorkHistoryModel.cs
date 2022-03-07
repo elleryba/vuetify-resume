@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Controllers.Views
+namespace Controllers.Models
 {
     /// <summary>
-    /// The work history view.
+    /// The work history model.
     /// </summary>
-    public class WorkHistoryView
+    public class WorkHistoryModel
     {
         #region Public Properties
 

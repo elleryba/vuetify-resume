@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using Controllers.Entities.Types.Entities;
+using Controllers.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -11,24 +12,44 @@ namespace Controllers.Storage
 {
     public partial class TechnicalSkillsContext : DbContext
     {
-        public TechnicalSkillsContext()
-        {
-        }
+        #region Private Fields
 
-        public TechnicalSkillsContext(DbContextOptions<TechnicalSkillsContext> options)
-            : base(options)
-        {
-        }
+        private readonly IConnectionStringService _connectionStringService;
+
+        #endregion Private Fields
+
+        #region Public Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TechnicalSkillsContext"/> class.
+        /// </summary>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public TechnicalSkillsContext(IConnectionStringService connectionStringService)
+            => _connectionStringService = connectionStringService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TechnicalSkillsContext"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public TechnicalSkillsContext(DbContextOptions<TechnicalSkillsContext> options,
+            IConnectionStringService connectionStringService)
+            : base(options) => _connectionStringService = connectionStringService;
+
+        #endregion Public Constructors
+
+        #region Public Properties
 
         public virtual DbSet<TechnicalSkill> TechnicalSkills { get; set; }
+
+        #endregion Public Properties
+
+        #region Protected Methods
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=EllerResume;Integrated Security=True");
-            }
+                optionsBuilder.UseSqlServer(_connectionStringService.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,12 +58,29 @@ namespace Controllers.Storage
 
             modelBuilder.Entity<TechnicalSkill>(entity =>
             {
-                entity.Property(e => e.Skill).IsUnicode(false);
+                entity.Property(e => e.Skill)
+                    .IsRequired()
+                    .IsUnicode(false);
+                entity.Property(e => e.BackEnd)
+                    .IsRequired()
+                    .IsUnicode(false);
+                entity.Property(e => e.FrontEnd)
+                    .IsRequired()
+                    .IsUnicode(false);
+                entity.Property(e => e.Id)
+                    .IsRequired()
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
         }
 
+        #endregion Protected Methods
+
+        #region Private Methods
+
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        #endregion Private Methods
     }
 }

@@ -39,23 +39,19 @@ namespace Controllers.Services
         {
             List<JobHistoryData> data = new();
 
-            using (JobHistoryContext dbContext = new(_connectionStringService))
-            {
-                DbSet<JobHistory> jobHistories = dbContext.JobHistories;
+            using JobHistoryContext dbContext = new(_connectionStringService);
+            DbSet<JobHistory> jobHistories = dbContext.JobHistories;
 
-                foreach (JobHistory history in jobHistories)
+            foreach (JobHistory history in jobHistories)
+                data.Add(new()
                 {
-                    data.Add(new()
-                    {
-                        CompanyName = history.CompanyName,
-                        EndDate = history.EndDate,
-                        Id = history.Id,
-                        StartDate = history.StartDate,
-                        Title = history.Title,
-                        WorkedRemote = history.WorkedRemote
-                    });
-                }
-            }
+                    CompanyName = history.CompanyName,
+                    EndDate = history.EndDate,
+                    Id = history.Id,
+                    StartDate = history.StartDate,
+                    Title = history.Title,
+                    WorkedRemote = history.WorkedRemote
+                });
 
             return Task.FromResult(data.AsEnumerable());
         }

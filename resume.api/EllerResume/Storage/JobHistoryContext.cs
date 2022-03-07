@@ -13,15 +13,9 @@ namespace Controllers.Storage.Storage
     {
         #region Private Fields
 
-        #region Private Fields
-
         private readonly IConnectionStringService _connectionStringService;
 
         #endregion Private Fields
-
-        #endregion Private Fields
-
-        #region Public Constructors
 
         #region Public Constructors
 
@@ -43,15 +37,9 @@ namespace Controllers.Storage.Storage
 
         #endregion Public Constructors
 
-        #endregion Public Constructors
-
-        #region Public Properties
-
         #region Public Properties
 
         public virtual DbSet<JobHistory> JobHistories { get; set; }
-
-        #endregion Public Properties
 
         #endregion Public Properties
 

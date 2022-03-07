@@ -39,19 +39,17 @@ namespace Controllers.Services
         {
             List<JobDutyData> data = new();
 
-            using (JobDutyContext dbContext = new(_connectionStringService))
-            {
-                DbSet<JobDuty> jobDuties = dbContext.JobDuties;
+            using JobDutyContext dbContext = new(_connectionStringService);
+            DbSet<JobDuty> jobDuties = dbContext.JobDuties;
 
-                foreach (JobDuty duty in jobDuties)
+            foreach (JobDuty duty in jobDuties)
+            {
+                data.Add(new()
                 {
-                    data.Add(new()
-                    {
-                        Id = duty.Id,
-                        Duty = duty.Duty,
-                        JobId = duty.JobId
-                    });
-                }
+                    Id = duty.Id,
+                    Duty = duty.Duty,
+                    JobId = duty.JobId
+                });
             }
 
             return Task.FromResult(data.AsEnumerable());

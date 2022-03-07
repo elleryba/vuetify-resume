@@ -1,6 +1,5 @@
-﻿using Controllers.Data;
+﻿using Controllers.Models;
 using Controllers.Services;
-using Controllers.Views;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,8 +17,7 @@ namespace EllerResume.Controllers
     {
         #region Private Fields
 
-        private readonly IJobDutyService _jobDutyService;
-        private readonly IJobHistoryService _jobHistoryService;
+        private readonly ITechnicalSkillsService _technicalSkillsService;
         private readonly IWorkHistoryService _workHistoryService;
 
         #endregion Private Fields
@@ -29,15 +27,12 @@ namespace EllerResume.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
-        /// <param name="jobDutyService">The job duty service.</param>
-        /// <param name="jobHistoryService">The job history service.</param>
         /// <param name="workHistoryService">The work history service.</param>
-        public HomeController(IJobDutyService jobDutyService,
-            IJobHistoryService jobHistoryService,
-            IWorkHistoryService workHistoryService)
+        /// <param name="technicalSkillsService">The technical skills service.</param>
+        public HomeController(IWorkHistoryService workHistoryService,
+            ITechnicalSkillsService technicalSkillsService)
         {
-            _jobDutyService = jobDutyService;
-            _jobHistoryService = jobHistoryService;
+            _technicalSkillsService = technicalSkillsService;
             _workHistoryService = workHistoryService;
         }
 
@@ -45,29 +40,36 @@ namespace EllerResume.Controllers
 
         #region Public Methods
 
-        // TODO - remove - for testing only
-        [Route("job_duties")]
+        [Route("technical_skills")]
         [HttpGet]
-        public async Task<ActionResult<JobDutyData>> GetJobDutyData()
+        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetAllTechnicalSkills()
         {
-            var result = await _jobDutyService.GetAllJobDutyData();
+            var result = await _technicalSkillsService.GetAllSkills();
 
             return Ok(result);
         }
 
-        // TODO - remove - for testing only
-        [Route("job_histories")]
+        [Route("technical_skills/back_end")]
         [HttpGet]
-        public async Task<ActionResult<JobDutyData>> GetJobHistoryData()
+        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetBackEndSkills()
         {
-            var result = await _jobHistoryService.GetAllJobHistoryData();
+            var result = await _technicalSkillsService.GetBackEndSkills();
+
+            return Ok(result);
+        }
+
+        [Route("technical_skills/front_end")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetFrontEndSkills()
+        {
+            var result = await _technicalSkillsService.GetFrontEndSkills();
 
             return Ok(result);
         }
 
         [Route("work_history")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkHistoryView>>> GetWorkHistory()
+        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetWorkHistory()
         {
             var result = await _workHistoryService.GetWorkHistory();
 

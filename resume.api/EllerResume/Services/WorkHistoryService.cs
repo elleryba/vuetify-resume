@@ -1,4 +1,4 @@
-﻿using Controllers.Views;
+﻿using Controllers.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,9 +39,9 @@ namespace Controllers.Services
         #region Public Methods
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<WorkHistoryView>> GetWorkHistory()
+        public async Task<IEnumerable<WorkHistoryModel>> GetWorkHistory()
         {
-            List<WorkHistoryView> workHistories = new();
+            List<WorkHistoryModel> workHistories = new();
 
             var histories = await _jobHistoryService.GetAllJobHistoryData();
             var duties = await _jobDutyService.GetAllJobDutyData();
@@ -51,7 +51,7 @@ namespace Controllers.Services
             {
                 var matchingDuties = duties.Where(x => x.JobId == h.Id);
 
-                var newHistory = new WorkHistoryView()
+                var newHistory = new WorkHistoryModel()
                 {
                     Duties = matchingDuties.Select(x => x.Duty).ToList(),
                     JobId = h.Id,
