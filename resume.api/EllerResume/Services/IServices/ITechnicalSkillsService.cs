@@ -15,7 +15,7 @@ namespace Controllers.Services
         /// Gets the all skills.
         /// </summary>
         /// <returns></returns>
-        public Task<IEnumerable<TechnicalSkillsData>> GetAllSkills();
+        public Task<IEnumerable<string>> GetAllSkills();
 
         /// <summary>
         /// Gets the back end skills.

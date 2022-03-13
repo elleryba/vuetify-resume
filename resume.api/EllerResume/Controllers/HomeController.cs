@@ -42,7 +42,7 @@ namespace EllerResume.Controllers
 
         [Route("technical_skills")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetAllTechnicalSkills()
+        public async Task<ActionResult<IEnumerable<string>>> GetAllTechnicalSkills()
         {
             var result = await _technicalSkillsService.GetAllSkills();
 
@@ -51,7 +51,7 @@ namespace EllerResume.Controllers
 
         [Route("technical_skills/back_end")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetBackEndSkills()
+        public async Task<ActionResult<IEnumerable<TechnicalSkillsModel>>> GetBackEndSkills()
         {
             var result = await _technicalSkillsService.GetBackEndSkills();
 
@@ -60,7 +60,7 @@ namespace EllerResume.Controllers
 
         [Route("technical_skills/front_end")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetFrontEndSkills()
+        public async Task<ActionResult<IEnumerable<TechnicalSkillsModel>>> GetFrontEndSkills()
         {
             var result = await _technicalSkillsService.GetFrontEndSkills();
 

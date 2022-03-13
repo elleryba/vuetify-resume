@@ -35,7 +35,7 @@ namespace Controllers.Services
         #region Public Methods
 
         /// <inheritdoc/>
-        public Task<IEnumerable<TechnicalSkillsData>> GetAllSkills()
+        public Task<IEnumerable<string>> GetAllSkills()
         {
             List<TechnicalSkillsData> data = new();
 
@@ -51,7 +51,9 @@ namespace Controllers.Services
                     Skill = skill.Skill
                 });
 
-            return Task.FromResult(data.AsEnumerable());
+            IEnumerable<string> allSkills = data.Select(x => x.Skill);
+
+            return Task.FromResult(allSkills);
         }
 
         /// <inheritdoc/>
