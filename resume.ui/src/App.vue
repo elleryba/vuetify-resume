@@ -44,17 +44,17 @@
   </v-app>
 </template>
 
-<script>
-import AboutMe from './components/AboutMe'
+<script lang="ts">
+import AboutMe from './components/AboutMe.vue'
 import EmailInfo from './components/EmailInfo.vue'
 import GitHubInfo from './components/GitHubInfo.vue'
 import LinkedInInfo from './components/LinkedInInfo.vue'
 import PhoneInfo from './components/PhoneInfo.vue';
-import ThemeChanger from './components/ThemeChanger'
+import ThemeChanger from './components/ThemeChanger.vue'
+import { defineComponent } from '@vue/composition-api'
 
-export default {
+export default defineComponent({
   name: 'App',
-
   components: {
     AboutMe,
     EmailInfo,
@@ -63,18 +63,13 @@ export default {
     ThemeChanger,
     PhoneInfo
   },
-
-  data: () => ({
-    //
-  }),
-  computed: {
-    theme(){
+  setup(){
+    function theme(){
       return (this.$vuetify.theme.dark) ? 'dark' : 'light'
     }
-  },
-  methods: {
+    return theme
   }
-};
+});
 </script>
 
 <style scoped>

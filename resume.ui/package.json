@@ -12,9 +12,10 @@
     "@vue/composition-api": "^1.4.6",
     "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
     "vue": "^2.6.11",
-    "vue-recaptcha": "^2.0.1",
-    "vuetify": "^2.4.0"
+    "vuetify": "^2.4.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.7",
