@@ -16,6 +16,7 @@ export const actions: ActionTree<TechnicalSkillStoreInterface, RootState> = {
       .get<TechnicalSkillApiResponseInterface>('http://localhost:41368/api/technical_skills')
       .then<TechnicalSkillInterface>((response) => {
         if (isEmpty(response?.data)) throw new Error('response is empty')
+        
         const skills = response.data as TechnicalSkillInterface
 
         commit(TechnicalSkillMutations.SET_SKILLS, { skills: skills })
