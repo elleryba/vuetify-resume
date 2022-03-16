@@ -1,7 +1,7 @@
-import { TechnicalSkillInterface, TechnicalSkillStoreInterface } from './types'
+import { TechnicalSkillStoreInterface } from './types'
 
 export const state: TechnicalSkillStoreInterface = {
-  skills: [] as Array<TechnicalSkillInterface>,
+  skills: [] as Array<string>
 }
 
 export default state

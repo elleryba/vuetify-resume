@@ -14,14 +14,9 @@ export const actions: ActionTree<TechnicalSkillStoreInterface, RootState> = {
     getTechnicalSkills({ commit }) {
     axios
       .get<TechnicalSkillApiResponseInterface>('http://localhost:41368/api/technical_skills')
-      .then<Array<TechnicalSkillInterface>>((response) => {
+      .then<TechnicalSkillInterface>((response) => {
         if (isEmpty(response?.data)) throw new Error('response is empty')
-        const skills = response.data.skills
-          .map(s => {
-            return {
-              skill: s
-            } as TechnicalSkillInterface
-          })
+        const skills = response.data as TechnicalSkillInterface
 
         commit(TechnicalSkillMutations.SET_SKILLS, { skills: skills })
         return skills

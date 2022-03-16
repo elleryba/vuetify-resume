@@ -1,11 +1,11 @@
 /** The technical skill interface. */
 export interface TechnicalSkillInterface {
-    skill: string;
+    skills: Array<string>;
   }
   
   /** The technical skill interface. */
   export interface TechnicalSkillStoreInterface {
-    skills: Array<TechnicalSkillInterface>;
+    skills: Array<string>;
   }
   
   export interface TechnicalSkillApiResponseInterface {

@@ -4,7 +4,7 @@
       <v-btn
         text
         color="warning"
-        @click="showTechStack = true"
+        @click="flipTechStackDisplay"
       >
         Tech Skills
       </v-btn>
@@ -12,7 +12,7 @@
 
     <v-expand-transition>
       <v-card
-        v-if="showTechStack"
+        v-if="isTechStackDisplayed"
         class="transition-fast-in-fast-out v-card--reveal scroll"
         style="height: 100%;"
       >
@@ -23,7 +23,7 @@
           <v-btn
             text
             color="warning"
-            @click="showTechStack = false"
+            @click="flipTechStackDisplay"
           >
             Close
           </v-btn>
@@ -43,36 +43,22 @@ import { TechnicalSkillInterface } from '@/store/modules/technical-skills/types'
 export default defineComponent({
   name: 'TechSkills',
   setup() {
-    const showTechStack = ref<boolean>()
+    const isTechStackDisplayed = ref<boolean>(false)
+
     const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
 
     store.dispatch(TechnicalSkillActions.GetTechnicalSkills)
 
+    function flipTechStackDisplay(){
+      isTechStackDisplayed.value = !isTechStackDisplayed.value
+    }
+
     return {
-      showTechStack,
+      isTechStackDisplayed,
+      flipTechStackDisplay,
       skills
     }
   },
-  // data: () => ({
-  //   showTechStack: false,
-  //   // this will eventually be moved to a db and pulled via api call
-  //   techSkills: [
-  //     'CSS',
-  //     'HTML',
-  //     'JavaScript',
-  //     'TypeScript',
-  //     'Vue.js (Vue 2 | vuetify | composition api)',
-  //     'C#',
-  //     '.NET',
-  //     'SQL',
-  //     'NoSQL',
-  //     'Sql Server Management Studio',
-  //     'MongoDB',
-  //     'Azure DevOps',
-  //     'Visual Studio | Visual Studio Code',
-  //     'Postman'
-  //   ]
-  // }),
 })
 </script>
 
