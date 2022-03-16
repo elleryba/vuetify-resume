@@ -1,20 +1,34 @@
 ﻿using Controllers.Entities.Types.Entities;
+using Controllers.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Controllers.Storage.Storage
 {
     public partial class TechnicalExperienceContext : DbContext
     {
+        #region Private Fields
+
+        private readonly IConnectionStringService _connectionStringService;
+
+        #endregion Private Fields
+
         #region Public Constructors
 
-        public TechnicalExperienceContext()
-        {
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TechnicalExperienceContext"/> class.
+        /// </summary>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public TechnicalExperienceContext(IConnectionStringService connectionStringService)
+            => _connectionStringService = connectionStringService;
 
-        public TechnicalExperienceContext(DbContextOptions<TechnicalExperienceContext> options)
-            : base(options)
-        {
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TechnicalExperienceContext"/> class.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <param name="connectionStringService">The connection string service.</param>
+        public TechnicalExperienceContext(DbContextOptions<TechnicalExperienceContext> options,
+            IConnectionStringService connectionStringService)
+            : base(options) => _connectionStringService = connectionStringService;
 
         #endregion Public Constructors
 
@@ -29,7 +43,7 @@ namespace Controllers.Storage.Storage
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer(_connectionStringService.GetConnectionString());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -53,12 +67,5 @@ namespace Controllers.Storage.Storage
         }
 
         #endregion Protected Methods
-
-        #region Private Methods
-
-        private static string GetConnectionString()
-            => "Data Source=localhost\\SQLEXPRESS;Initial Catalog=EllerResume;Integrated Security=True";
-
-        #endregion Private Methods
     }
 }

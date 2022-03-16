@@ -9,11 +9,7 @@
           </v-row>
           <v-row class="my-2 mx-0">
             <div align="left" class="text-subtitle-3">
-              Engineered a back-end microservice framework within multiple
-              domain driven apis. Full-stack project. Involved in all aspects of
-              development. Responsible for maintaining and refining code as well
-              as interpreting user stories to build out new features. Worked
-              closely with testers to resolve bugs as they were reported.
+              <p v-for="d in experienceData" :key="d">{{d}}</p>
             </div>
           </v-row>
         </v-card-text>
@@ -23,9 +19,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { computed, defineComponent } from '@vue/composition-api'
+import store from '@/store'
+import { TechnicalExperienceActions } from '@/store/modules/technical-experience/actions'
+import { TechnicalExperienceGetters } from '@/store/modules/technical-experience/getters'
+import { TechnicalExperienceInterface } from '@/store/modules/technical-experience/types'
 
 export default defineComponent({
-  name: 'TechnicalExperience'
+  name: 'TechnicalExperience',
+  setup() {
+    const experienceData = computed<Array<TechnicalExperienceInterface>>(() => store.getters[TechnicalExperienceGetters.All])
+
+    store.dispatch(TechnicalExperienceActions.GetTechnicalExperience)
+
+    return{
+      experienceData
+    }
+  }
 })
 </script>

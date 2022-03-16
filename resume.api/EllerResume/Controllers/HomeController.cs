@@ -17,6 +17,7 @@ namespace EllerResume.Controllers
     {
         #region Private Fields
 
+        private readonly ITechnicalExperienceService _technicalExperienceService;
         private readonly ITechnicalSkillsService _technicalSkillsService;
         private readonly IWorkHistoryService _workHistoryService;
 
@@ -29,9 +30,12 @@ namespace EllerResume.Controllers
         /// </summary>
         /// <param name="workHistoryService">The work history service.</param>
         /// <param name="technicalSkillsService">The technical skills service.</param>
+        /// <param name="technicalExperienceService">The technical experience service.</param>
         public HomeController(IWorkHistoryService workHistoryService,
+            ITechnicalExperienceService technicalExperienceService,
             ITechnicalSkillsService technicalSkillsService)
         {
+            _technicalExperienceService = technicalExperienceService;
             _technicalSkillsService = technicalSkillsService;
             _workHistoryService = workHistoryService;
         }
@@ -39,6 +43,15 @@ namespace EllerResume.Controllers
         #endregion Public Constructors
 
         #region Public Methods
+
+        [Route("technical_experience")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<string>>> GetTechnicalExperience()
+        {
+            var result = await _technicalExperienceService.GetTechnicalExperience();
+
+            return Ok(result);
+        }
 
         [Route("technical_skills")]
         [HttpGet]

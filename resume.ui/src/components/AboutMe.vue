@@ -28,9 +28,14 @@
             </v-row>
             <v-row class="my-2 mx-0">
               <div align="left" class="text-subtitle-3">
-                At this time, this entire project is comprised of only a front-end code base.
-                Why? Because I feel like front-end work has been my weak point. This is how I make
-                it a strength.
+                <span style='text-decoration:line-through'>
+                  At this time, this entire project is comprised of only a front-end code base.
+                  Why? Because I feel like front-end work has been my weak point. This is how I make
+                  it a strength
+                </span>.
+                This project started as front-end only. I have now begun integrating my back-end code base.
+                The back-end is comprised of an api that retrieves data from a SQL database via EF Core and
+                the .NET framework.
               </div>
             </v-row>
           </v-card-text>

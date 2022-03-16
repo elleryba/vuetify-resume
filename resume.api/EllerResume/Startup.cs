@@ -55,6 +55,7 @@ namespace EllerResume
 
             services.AddScoped<IJobDutyService, JobDutyService>();
             services.AddScoped<IJobHistoryService, JobHistoryService>();
+            services.AddScoped<ITechnicalExperienceService, TechnicalExperienceService>();
             services.AddScoped<ITechnicalSkillsService, TechnicalSkillsService>();
             services.AddScoped<IConnectionStringService, ConnectionStringService>();
             services.AddScoped<IWorkHistoryService, WorkHistoryService>();
