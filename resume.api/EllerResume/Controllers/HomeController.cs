@@ -17,6 +17,7 @@ namespace EllerResume.Controllers
     {
         #region Private Fields
 
+        private readonly IResumeService _resumeService;
         private readonly ITechnicalExperienceService _technicalExperienceService;
         private readonly ITechnicalSkillsService _technicalSkillsService;
         private readonly IWorkHistoryService _workHistoryService;
@@ -28,13 +29,16 @@ namespace EllerResume.Controllers
         /// <summary>
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
-        /// <param name="workHistoryService">The work history service.</param>
-        /// <param name="technicalSkillsService">The technical skills service.</param>
+        /// <param name="resumeService">The resume service.</param>
         /// <param name="technicalExperienceService">The technical experience service.</param>
-        public HomeController(IWorkHistoryService workHistoryService,
+        /// <param name="technicalSkillsService">The technical skills service.</param>
+        /// <param name="workHistoryService">The work history service.</param>
+        public HomeController(IResumeService resumeService,
             ITechnicalExperienceService technicalExperienceService,
-            ITechnicalSkillsService technicalSkillsService)
+            ITechnicalSkillsService technicalSkillsService,
+            IWorkHistoryService workHistoryService)
         {
+            _resumeService = resumeService;
             _technicalExperienceService = technicalExperienceService;
             _technicalSkillsService = technicalSkillsService;
             _workHistoryService = workHistoryService;
@@ -43,6 +47,15 @@ namespace EllerResume.Controllers
         #endregion Public Constructors
 
         #region Public Methods
+
+        [Route("resume")]
+        [HttpGet]
+        public async Task<ActionResult<ResumeModel>> GetResume()
+        {
+            var result = await _resumeService.BuildResume();
+
+            return Ok(result);
+        }
 
         [Route("technical_experience")]
         [HttpGet]

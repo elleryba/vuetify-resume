@@ -53,11 +53,12 @@ namespace EllerResume
         {
             services.AddControllers();
 
+            services.AddScoped<IConnectionStringService, ConnectionStringService>();
             services.AddScoped<IJobDutyService, JobDutyService>();
             services.AddScoped<IJobHistoryService, JobHistoryService>();
+            services.AddScoped<IResumeService, ResumeService>();
             services.AddScoped<ITechnicalExperienceService, TechnicalExperienceService>();
             services.AddScoped<ITechnicalSkillsService, TechnicalSkillsService>();
-            services.AddScoped<IConnectionStringService, ConnectionStringService>();
             services.AddScoped<IWorkHistoryService, WorkHistoryService>();
 
             services.AddCors(options =>
