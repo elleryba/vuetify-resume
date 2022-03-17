@@ -59,11 +59,12 @@ namespace Controllers.Services
                 jobs.Add(new()
                 {
                     CompanyName = jh.CompanyName,
-                    Title = jh.Title,
-                    StartDate = jh.StartDate,
                     EndDate = jh.EndDate,
-                    WasRemotePosition = jh.WorkedRemote,
-                    JobDuties = duties
+                    Id = jh.Id,
+                    JobDuties = duties,
+                    StartDate = jh.StartDate,
+                    Title = jh.Title,
+                    WasRemotePosition = jh.WorkedRemote
                 });
             }
 

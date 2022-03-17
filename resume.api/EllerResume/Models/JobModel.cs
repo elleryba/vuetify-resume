@@ -23,6 +23,12 @@ namespace Controllers.Models
         public DateTime? EndDate { get; set; }
 
         /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
+        public int Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the job duties.
         /// </summary>
         /// <value>The job duties.</value>

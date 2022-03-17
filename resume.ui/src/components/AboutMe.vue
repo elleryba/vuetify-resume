@@ -44,6 +44,8 @@
 
           <TechnicalSkills />
 
+          <Resume />
+
         </v-card>
         <v-row
           no-gutters
@@ -66,6 +68,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import PersonalInfo from './PersonalInfo.vue'
+import Resume from './Resume.vue'
 import TechnicalExperience from './TechnicalExperience.vue'
 import TechnicalSkills from './TechnicalSkills.vue'
 
@@ -73,6 +76,7 @@ export default defineComponent({
   name: 'AboutMe',
   components: {
     PersonalInfo,
+    Resume,
     TechnicalExperience,
     TechnicalSkills
   },
