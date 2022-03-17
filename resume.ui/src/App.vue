@@ -8,8 +8,9 @@
         <span
           class="name"
           :style="{ color: $vuetify.theme.themes[theme].background }"
-          >ELLE RYBA</span
         >
+          ELLE RYBA
+        </span>
       </div>
 
       <v-spacer></v-spacer>

@@ -7,8 +7,7 @@ export class ResumeMutations {
 
 export const mutations: MutationTree<ResumeStoreInterface> = {
   SET_RESUME(state: ResumeStoreInterface, payload: { resume: ResumeInterface }) {
-    console.info('****payload: ', payload)
-    state.resume = payload.resume.items
+    state.resume = payload.resume
   }
 }
 

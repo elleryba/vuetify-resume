@@ -10,12 +10,12 @@ export interface JobItemInterface {
   }
 
 export interface ResumeInterface {
-  items: Array<JobItemInterface>
+  resume: Array<JobItemInterface>
 }
   
   /** The resume store interface. */
   export interface ResumeStoreInterface {
-    resume: Array<JobItemInterface>;
+    resume: ResumeInterface;
   }
   
   /** The resume api response interface. */

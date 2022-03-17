@@ -20,7 +20,6 @@ namespace EllerResume.Controllers
         private readonly IResumeService _resumeService;
         private readonly ITechnicalExperienceService _technicalExperienceService;
         private readonly ITechnicalSkillsService _technicalSkillsService;
-        private readonly IWorkHistoryService _workHistoryService;
 
         #endregion Private Fields
 
@@ -32,16 +31,13 @@ namespace EllerResume.Controllers
         /// <param name="resumeService">The resume service.</param>
         /// <param name="technicalExperienceService">The technical experience service.</param>
         /// <param name="technicalSkillsService">The technical skills service.</param>
-        /// <param name="workHistoryService">The work history service.</param>
         public HomeController(IResumeService resumeService,
             ITechnicalExperienceService technicalExperienceService,
-            ITechnicalSkillsService technicalSkillsService,
-            IWorkHistoryService workHistoryService)
+            ITechnicalSkillsService technicalSkillsService)
         {
             _resumeService = resumeService;
             _technicalExperienceService = technicalExperienceService;
             _technicalSkillsService = technicalSkillsService;
-            _workHistoryService = workHistoryService;
         }
 
         #endregion Public Constructors
@@ -89,15 +85,6 @@ namespace EllerResume.Controllers
         public async Task<ActionResult<IEnumerable<TechnicalSkillsModel>>> GetFrontEndSkills()
         {
             var result = await _technicalSkillsService.GetFrontEndSkills();
-
-            return Ok(result);
-        }
-
-        [Route("work_history")]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<WorkHistoryModel>>> GetWorkHistory()
-        {
-            var result = await _workHistoryService.GetWorkHistory();
 
             return Ok(result);
         }

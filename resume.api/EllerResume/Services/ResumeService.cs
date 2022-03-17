@@ -1,4 +1,5 @@
 ﻿using Controllers.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,24 +52,21 @@ namespace Controllers.Services
 
             foreach (var jh in jobHistories)
             {
-                List<string> duties = new();
-
-                foreach (var jd in jobDuties.Where(x => x.JobId == jh.Id))
-                    duties.Add(jd.Duty);
+                var duties = jobDuties.Where(x => x.JobId == jh.Id);
 
                 jobs.Add(new()
                 {
                     CompanyName = jh.CompanyName,
                     EndDate = jh.EndDate,
                     Id = jh.Id,
-                    JobDuties = duties,
+                    JobDuties = duties.Select(x => x.Duty).ToList(),
                     StartDate = jh.StartDate,
                     Title = jh.Title,
                     WasRemotePosition = jh.WorkedRemote
                 });
             }
 
-            return new ResumeModel() { Resume = jobs };
+            return new ResumeModel() { Resume = jobs.OrderBy(x => x.EndDate ?? DateTime.Now).Reverse() };
         }
 
         #endregion Public Methods

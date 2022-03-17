@@ -1,7 +1,7 @@
-import { JobItemInterface, ResumeStoreInterface } from './types'
+import { ResumeInterface, ResumeStoreInterface } from './types'
 
 export const state: ResumeStoreInterface = {
-  resume: [] as Array<JobItemInterface>
+  resume: {} as ResumeInterface
 }
 
 export default state

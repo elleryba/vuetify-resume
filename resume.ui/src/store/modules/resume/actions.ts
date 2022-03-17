@@ -18,7 +18,7 @@ export const actions: ActionTree<ResumeStoreInterface, RootState> = {
         if (isEmpty(response?.data)) throw new Error('response is empty')
 
         const resume = response.data.resume as ResumeInterface
-        console.info('*****resume: ', resume)
+
         commit(ResumeMutations.SET_RESUME, { resume: resume })
 
         return resume

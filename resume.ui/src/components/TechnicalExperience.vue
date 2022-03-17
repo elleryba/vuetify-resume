@@ -13,6 +13,8 @@
             </div>
           </v-row>
         </v-card-text>
+        <v-divider class="mx-4"></v-divider>
+        <TechnicalSkills />
       </v-card>
     </v-col>
   </v-row>
@@ -20,6 +22,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api'
+import TechnicalSkills from './TechnicalSkills.vue'
 import store from '@/store'
 import { TechnicalExperienceActions } from '@/store/modules/technical-experience/actions'
 import { TechnicalExperienceGetters } from '@/store/modules/technical-experience/getters'
@@ -27,6 +30,9 @@ import { TechnicalExperienceInterface } from '@/store/modules/technical-experien
 
 export default defineComponent({
   name: 'TechnicalExperience',
+  components: {
+    TechnicalSkills
+  },
   setup() {
     const experienceData = computed<Array<TechnicalExperienceInterface>>(() => store.getters[TechnicalExperienceGetters.All])
 
