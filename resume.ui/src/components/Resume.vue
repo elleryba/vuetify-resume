@@ -19,6 +19,7 @@
         elevation="5"
       >
         <v-card
+          class="my-4 mx-4"
           elevation="5"
           v-for="item in resume" :key="item.id"
         >

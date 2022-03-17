@@ -8,6 +8,7 @@
         :loading="loading"
         class="my-4 mx-4"
         max-width="500"
+        height="650"
         elevation="5"
       >
         <v-img
@@ -53,6 +54,7 @@
           color="primary"
           class="my-4 mx-4"
           max-width="500"
+          height="650"
           elevation="5"
         >
           <TechnicalExperience />
