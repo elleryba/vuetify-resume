@@ -74,3 +74,11 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Assistant&family=Poppins&family=Roboto&family=Ubuntu&display=swap');
+
+.v-application{
+  font-family: 'Nunito', sans-serif;
+}
+</style>

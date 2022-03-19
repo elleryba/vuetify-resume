@@ -28,8 +28,8 @@
             <v-row align="center" class="mx-0 my-0">
               <div class="text-subtitle-1">
                 Title: {{ item.title }}<br/>
-                Start Date: {{ formatDate(item.startDate) }}<br/>
-                End Date: {{ formatDate(item.endDate) }}<br/>
+                Start Date: {{ useDateFormatter(item.startDate) }}<br/>
+                End Date: {{ useDateFormatter(item.endDate) }}<br/>
                 Worked Remote: {{ item.wasRemotePosition ? 'Yes' : 'No' }}
               </div>
             </v-row>
@@ -57,8 +57,8 @@
 </template>
 
 <script lang="ts">
-import { isEmpty } from 'lodash'
 import { computed, defineComponent, ref } from '@vue/composition-api'
+import { useDateFormatter } from '@/composables/dates'
 import store from '@/store'
 import { ResumeActions } from '@/store/modules/resume/actions'
 import { ResumeGetters } from '@/store/modules/resume/getters'
@@ -77,19 +77,11 @@ export default defineComponent({
             isResumeShowing.value = !isResumeShowing.value
         }
 
-        function formatDate(date: Date){
-          if (isEmpty(date)) return ''
-
-          var dateText = date.toString()
-          var components = dateText.split('T')
-          return components[0]
-        }
-
         return {
             flipResumeDisplay,
-            formatDate,
             isResumeShowing,
-            resume
+            resume,
+            useDateFormatter
         }
     }
 })

@@ -32,7 +32,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/composables/dateFormatter.js"  ],
   "exclude": [
     "node_modules"
   ]
