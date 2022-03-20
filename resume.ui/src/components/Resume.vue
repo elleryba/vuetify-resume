@@ -21,7 +21,7 @@
         <v-card
           class="my-4 mx-4"
           elevation="5"
-          v-for="item in resume" :key="item.id"
+          v-for="item in resumeData" :key="item.id"
         >
           <v-card-title>{{ item.companyName }}</v-card-title>
           <v-card-text>
@@ -69,7 +69,7 @@ export default defineComponent({
     setup() {
         const isResumeShowing = ref<boolean>(false)
 
-        const resume = computed<Array<JobItemInterface>>(() => store.getters[ResumeGetters.All])
+        const resumeData = computed<Array<JobItemInterface>>(() => store.getters[ResumeGetters.All])
 
         store.dispatch(ResumeActions.GetResume)
 
@@ -80,7 +80,7 @@ export default defineComponent({
         return {
             flipResumeDisplay,
             isResumeShowing,
-            resume,
+            resumeData,
             useDateFormatter
         }
     }

@@ -1,14 +1,14 @@
 <template>
-  <div class="home">
+  <div>
     <AboutMe />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from '@vue/composition-api'
 import AboutMe from '@/components/AboutMe.vue'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Home',
   components: {
     AboutMe

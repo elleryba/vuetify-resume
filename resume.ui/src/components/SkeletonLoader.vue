@@ -1,25 +1,17 @@
 <template>
-  <v-sheet
-    :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
-    class="pa-3"
-  >
-    <v-skeleton-loader
-      class="mx-auto"
-      max-width="300"
-      type="card"
-    ></v-skeleton-loader>
-  </v-sheet>
+  <v-skeleton-loader
+    class="my-4 mx-4"
+    width="500"
+    height="350"
+    elevation="5"
+    type="card-heading, list-item-three-line, list-item-two-line, list-item-two-line"
+  ></v-skeleton-loader>
 </template>
 
 <script>
-  export default {
-    // Vuetify components provide
-    // a theme variable that is
-    // used to determine dark
-    inject: {
-      theme: {
-        default: { isDark: false },
-      },
-    },
-  }
+import { defineComponent } from '@vue/composition-api'
+
+  export default defineComponent({
+    name: 'SkeletonLoader'
+  })
 </script>

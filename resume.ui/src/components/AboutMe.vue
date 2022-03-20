@@ -4,7 +4,11 @@
         no-gutters
         style="height: 150px;"
     >
+      <div v-if="isLoading">
+        <SkeletonLoader />
+      </div>
       <v-card
+        v-else
         class="my-4 mx-4"
         max-width="500"
         height="650"
@@ -49,7 +53,11 @@
         no-gutters
         style="height: 150px;"
       >
+        <div v-if="isLoading">
+          <SkeletonLoader />
+        </div>
         <v-card
+          v-else
           color="primary"
           class="my-4 mx-4"
           max-width="500"
@@ -58,7 +66,6 @@
         >
           <TechnicalExperience />
           <PersonalInfo />
-          
         </v-card>
       </v-row>
     </v-row>
@@ -66,29 +73,53 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import PersonalInfo from './PersonalInfo.vue'
-import Resume from './Resume.vue'
-import TechnicalExperience from './TechnicalExperience.vue'
+import { isEmpty } from 'lodash'
+import { computed, defineComponent, ref } from '@vue/composition-api'
+import PersonalInfo from '@/components/PersonalInfo.vue'
+import Resume from '@/components/Resume.vue'
+import SkeletonLoader from '@/components/SkeletonLoader.vue'
+import TechnicalExperience from '@/components/TechnicalExperience.vue'
+import store from '@/store'
+import { JobItemInterface } from '@/store/modules/resume/types'
+import { ResumeGetters } from '@/store/modules/resume/getters'
+import { TechnicalExperienceGetters } from '@/store/modules/technical-experience/getters'
+import { TechnicalExperienceInterface } from '@/store/modules/technical-experience/types'
+import { TechnicalSkillGetters } from '@/store/modules/technical-skills/getters'
+import { TechnicalSkillInterface } from '@/store/modules/technical-skills/types'
 
 export default defineComponent({
   name: 'AboutMe',
   components: {
     PersonalInfo,
     Resume,
+    SkeletonLoader,
     TechnicalExperience
   },
-  async setup() {
+  setup() {
     const alignments = [ 'start', 'center', 'end' ]
+    const isLoading = ref<boolean>(true)
+    const resumeData = computed<Array<JobItemInterface>>(() => store.getters[ResumeGetters.All])
+    const experienceData = computed<Array<TechnicalExperienceInterface>>(() => store.getters[TechnicalExperienceGetters.All])
+    const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
+
+    async function loadingCheck() {
+      while(isEmpty(resumeData) && isEmpty(experienceData) && isEmpty(skills))
+        isLoading.value = true
+      
+      // let the people see the pretty lil skeleton loader
+      setTimeout(() =>
+        isLoading.value = false, 1000)
+    }
+
+    loadingCheck()
 
     return {
-      alignments
+      alignments,
+      isLoading
     }
   },
   data: () => ({
-    // would like to store and retrieve via api
     profilePic: require('../assets/profile_pic.png')
-  }),
-  methods:{}
+  })
 })
 </script>
