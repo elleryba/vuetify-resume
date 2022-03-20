@@ -5,7 +5,6 @@
         style="height: 150px;"
     >
       <v-card
-        :loading="loading"
         class="my-4 mx-4"
         max-width="500"
         height="650"
@@ -79,15 +78,16 @@ export default defineComponent({
     Resume,
     TechnicalExperience
   },
+  async setup() {
+    const alignments = [ 'start', 'center', 'end' ]
+
+    return {
+      alignments
+    }
+  },
   data: () => ({
-    loading: false,
     // would like to store and retrieve via api
-    profilePic: require('../assets/profile_pic.png'),
-    alignments: [
-        'start',
-        'center',
-        'end',
-      ]
+    profilePic: require('../assets/profile_pic.png')
   }),
   methods:{}
 })

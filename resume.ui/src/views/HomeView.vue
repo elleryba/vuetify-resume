@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import AboutMe from '../components/AboutMe.vue'
+import AboutMe from '@/components/AboutMe.vue'
 
 export default {
   name: 'Home',
