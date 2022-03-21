@@ -1,5 +1,5 @@
-﻿using Controllers.Models;
-using Controllers.Services;
+﻿using Common.Models;
+using Common.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
