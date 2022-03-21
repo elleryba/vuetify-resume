@@ -1,0 +1,15 @@
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\Database.deps.json
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\Database.dll
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\ref\Database.dll
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\Database.pdb
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\Common.dll
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\bin\Debug\net5.0\Common.pdb
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.csproj.AssemblyReference.cache
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.AssemblyInfoInputs.cache
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.AssemblyInfo.cs
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.csproj.CoreCompileInputs.cache
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.csproj.CopyComplete
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.dll
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\ref\Database.dll
+C:\Users\ellea\Source\Repos\eller-resume\resume.api\Database\obj\Debug\net5.0\Database.pdb

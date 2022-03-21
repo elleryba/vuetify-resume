@@ -1,4 +1,4 @@
-using Controllers.Services;
+using Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +10,12 @@ namespace EllerResume
 {
     public class Startup
     {
+        #region Public Properties
+
+        public IConfiguration Configuration { get; }
+
+        #endregion Public Properties
+
         #region Public Constructors
 
         /// <summary>
@@ -19,12 +25,6 @@ namespace EllerResume
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
         #endregion Public Constructors
-
-        #region Public Properties
-
-        public IConfiguration Configuration { get; }
-
-        #endregion Public Properties
 
         #region Public Methods
 
@@ -53,13 +53,6 @@ namespace EllerResume
         {
             services.AddControllers();
 
-            services.AddScoped<IConnectionStringService, ConnectionStringService>();
-            services.AddScoped<IJobDutyService, JobDutyService>();
-            services.AddScoped<IJobHistoryService, JobHistoryService>();
-            services.AddScoped<IResumeService, ResumeService>();
-            services.AddScoped<ITechnicalExperienceService, TechnicalExperienceService>();
-            services.AddScoped<ITechnicalSkillsService, TechnicalSkillsService>();
-
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowCorsForTesting",
@@ -68,6 +61,8 @@ namespace EllerResume
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
+
+            DatabaseServiceExtensions.RegisterServices(services);
 
             services.AddDbContext<DbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
