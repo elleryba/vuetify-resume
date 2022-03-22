@@ -38,7 +38,7 @@
                 it a strength
               </span>.
               This project started as front-end only. I have now begun integrating my back-end code base.
-              The back-end is comprised of an api that retrieves data from a SQL database via EF Core and
+              The back-end is comprised of an api that retrieves data from a SQL database via EF Core in
               the .NET framework.
             </div>
           </v-row>
@@ -103,12 +103,12 @@ export default defineComponent({
     const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
 
     async function loadingCheck() {
-      while(isEmpty(resumeData) && isEmpty(experienceData) && isEmpty(skills))
+      while(isEmpty(resumeData) || isEmpty(experienceData) || isEmpty(skills))
         isLoading.value = true
       
       // let the people see the pretty lil skeleton loader
       setTimeout(() =>
-        isLoading.value = false, 1000)
+        isLoading.value = false, 2000)
     }
 
     loadingCheck()

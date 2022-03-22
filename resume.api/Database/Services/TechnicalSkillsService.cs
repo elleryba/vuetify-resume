@@ -51,8 +51,10 @@ namespace Database.Services
                     IsBackEnd = skill.BackEnd,
                     Skill = skill.Skill
                 });
+            
+            var orderedData = data?.OrderBy(x => x.IsBackEnd).ThenBy(x => x.Id);
 
-            IEnumerable<string> allSkills = data.Select(x => x.Skill);
+            IEnumerable<string> allSkills = orderedData?.Select(x => x.Skill);
 
             return Task.FromResult(allSkills);
         }
