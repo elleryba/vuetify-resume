@@ -49,7 +49,7 @@ export default defineComponent({
 
     const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
 
-    store.dispatch(TechnicalSkillActions.SetTechnicalSkills)
+    store.dispatch(TechnicalSkillActions.GetTechnicalSkills)
 
     function flipTechStackDisplay(){
       isTechStackDisplayed.value = !isTechStackDisplayed.value

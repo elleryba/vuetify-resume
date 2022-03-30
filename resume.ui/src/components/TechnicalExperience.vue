@@ -52,7 +52,7 @@ export default defineComponent({
     const resumeData = computed<Array<JobItemInterface>>(() => store.getters[ResumeGetters.All])
     const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
 
-    store.dispatch(TechnicalExperienceActions.SetTechnicalExperience)
+    store.dispatch(TechnicalExperienceActions.GetTechnicalExperience)
 
     async function loadingCheck() {
       while(isEmpty(resumeData) || isEmpty(experienceData) || isEmpty(skills))

@@ -28,8 +28,8 @@
             <v-row align="center" class="mx-0 my-0">
               <div class="text-subtitle-1">
                 Title: {{ item.title }}<br/>
-                Start Date: {{ useJsDateFormatter(item.startDate) }}<br/>
-                End Date: {{ useJsDateFormatter(item.endDate) }}<br/>
+                Start Date: {{ useDateFormatter(item.startDate) }}<br/>
+                End Date: {{ useDateFormatter(item.endDate) }}<br/>
                 Worked Remote: {{ item.wasRemotePosition ? 'Yes' : 'No' }}
               </div>
             </v-row>
@@ -59,7 +59,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from '@vue/composition-api'
 
-import { useJsDateFormatter } from '@/composables/dates'
+import { useDateFormatter } from '@/composables/dates'
 import store from '@/store'
 import { ResumeActions } from '@/store/modules/resume/actions'
 import { ResumeGetters } from '@/store/modules/resume/getters'
@@ -72,7 +72,7 @@ export default defineComponent({
 
         const resumeData = computed<Array<JobItemInterface>>(() => store.getters[ResumeGetters.All])
 
-        store.dispatch(ResumeActions.SetResume)
+        store.dispatch(ResumeActions.GetResume)
 
         function flipResumeDisplay() {
             isResumeShowing.value = !isResumeShowing.value
@@ -82,7 +82,7 @@ export default defineComponent({
             flipResumeDisplay,
             isResumeShowing,
             resumeData,
-            useJsDateFormatter
+            useDateFormatter
         }
     }
 })
