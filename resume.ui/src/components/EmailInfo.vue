@@ -7,16 +7,14 @@
 <script lang="ts">
 import Vue from 'vue'
 
+// lets use composition api here to defineComponent
 export default Vue.extend({
   name: 'EmailInfo',
-  data() {
-    return {}
-  },
   methods: {
     // would like to change this to emit to parent
     sendEmail() {
       window.location.href = 'mailto:elleryba@icloud.com'
-    },
-  },
+    }
+  }
 })
 </script>

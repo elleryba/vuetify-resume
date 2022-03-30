@@ -15,6 +15,7 @@
         v-if="isTechStackDisplayed"
         class="transition-fast-in-fast-out v-card--reveal scroll"
         style="height: 100%;"
+        color="primary"
       >
         <v-card-text class="pb-0">
           <p v-for="s in skills" :key="s">{{s}}</p>
@@ -35,6 +36,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from '@vue/composition-api'
+
 import store from '@/store'
 import { TechnicalSkillActions } from '@/store/modules/technical-skills/actions'
 import { TechnicalSkillGetters } from '@/store/modules/technical-skills/getters'
@@ -47,7 +49,7 @@ export default defineComponent({
 
     const skills = computed<Array<TechnicalSkillInterface>>(() => store.getters[TechnicalSkillGetters.All])
 
-    store.dispatch(TechnicalSkillActions.GetTechnicalSkills)
+    store.dispatch(TechnicalSkillActions.SetTechnicalSkills)
 
     function flipTechStackDisplay(){
       isTechStackDisplayed.value = !isTechStackDisplayed.value
@@ -58,7 +60,7 @@ export default defineComponent({
       flipTechStackDisplay,
       skills
     }
-  },
+  }
 })
 </script>
 

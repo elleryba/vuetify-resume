@@ -7,13 +7,13 @@
 <script lang="ts">
 import Vue from 'vue'
 
+// lets use composition api here to defineComponent
 export default Vue.extend({
   name: 'LinkedInInfo',
   data() {
     return {
-      route: 'https://www.linkedin.com/in/elle-ryba/',
+      route: 'https://www.linkedin.com/in/elle-ryba/'
     }
-  },
-  methods: {},
+  }
 })
 </script>
