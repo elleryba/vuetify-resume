@@ -7,13 +7,13 @@
 <script lang="ts">
 import Vue from 'vue'
 
+// lets use composition api here to defineComponent
 export default Vue.extend({
   name: 'GitHubInfo',
   data() {
     return {
-      route: 'https://github.com/elleryba',
+      route: 'https://github.com/elleryba'
     }
-  },
-  methods: {},
+  }
 })
 </script>

@@ -1,4 +1,4 @@
-# eller-resume-v2
+# eller-front-end-resume
 
 ## Project setup
 ```

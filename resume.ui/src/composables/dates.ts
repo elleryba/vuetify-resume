@@ -13,3 +13,16 @@ export function useDateFormatter(date: Date): string {
 
     return formattedDate
 }
+
+/** Also gross. This is to format the date string when
+ * the resume is built client-side.
+ */
+export function useJsDateFormatter(date: Date | undefined): string {
+    if (date == undefined) return ''
+
+    const dateText = date.toString()
+    const dateComponents = dateText.split(' ')
+    const formattedDate = `${dateComponents[1]} ${dateComponents[2]} ${dateComponents[3]}`
+
+    return formattedDate
+}

@@ -1,16 +1,19 @@
 {
-  "name": "eller-resume-v2",
+  "name": "eller-front-end-resume",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "predeploy": "yarn build",
+    "deploy": "yarn deploy"
   },
   "dependencies": {
     "@vue/composition-api": "1.4.6",
     "axios": "0.26.0",
     "core-js": "^3.6.5",
+    "execa": "latest",
     "lodash": "4.17.21",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
@@ -18,6 +21,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@mdi/font": "^6.5.95",
     "@types/lodash": "^4.14.180",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",

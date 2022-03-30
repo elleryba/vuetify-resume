@@ -1,6 +1,6 @@
 <template>
   <v-skeleton-loader
-    class="my-4 mx-4"
+    class="my-auto mx-auto"
     width="500"
     height="350"
     elevation="5"

@@ -8,9 +8,9 @@
     <v-card>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="font-weight-bold">{{
-            phoneNumber
-          }}</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">
+            {{ phoneNumber }}
+          </v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
           <v-btn v-model="phoneNumber" @click="copyPhoneNumber()">
@@ -25,6 +25,7 @@
 
 <script lang="ts">
 
+// lets use composition api here to defineComponent
 export default {
   name: 'PhoneInfo',
   data(): { menu: boolean; phoneNumber: string } {
@@ -37,7 +38,7 @@ export default {
     // add notification to user that action was completed
     copyPhoneNumber(): void {
       navigator.clipboard.writeText('216-379-9501')
-    },
-  },
+    }
+  }
 }
 </script>

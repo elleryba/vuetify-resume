@@ -13,9 +13,9 @@
     <v-card>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="font-weight-bold">{{
-            isDark ? "Light Mode" : "Dark Mode"
-          }}</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">
+            {{ isDark ? "Light Mode" : "Dark Mode" }}
+          </v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
           <v-switch v-model="$vuetify.theme.dark" @click="setSwitchText()" />
@@ -29,6 +29,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
+// lets use composition api here to defineComponent
 export default Vue.extend({
   name: 'ThemeChanger',
   data() {
@@ -40,7 +41,7 @@ export default Vue.extend({
   methods: {
     setSwitchText() {
       this.isDark = !this.isDark
-    },
-  },
+    }
+  }
 })
 </script>
